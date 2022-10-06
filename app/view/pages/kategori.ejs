@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digi Perpus</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- IonIcons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+  <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+
+        <li class="nav-item dropdown">
+
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-user-circle"></i>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <div class="dropdown-divider"></div>
+            <a href="/ubah_password" class="dropdown-item">
+              <i class="fas fa-lock mr-2"></i> Ubah Password
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="/logout" class="dropdown-item" onclick="logout()">
+              <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </a>
+          </div>
+
+        </li>
+      </ul>
+
+    </nav>
+    <!-- /.navbar -->
+
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="/beranda" class="brand-link">
+        <img src="dist/img/book1.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
+        <span class="brand-text font-weight-light">Digi Perpus</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="dist/img/pngegg (1).jpg" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info" id="user">
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+            <li class="nav-item">
+              <a href="/beranda" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Beranda
+                </p>
+              </a>
+            </li>
+            <!-- menu-open untuk buka -->
+            <li class="nav-item">
+              <!-- acctive untuk select -->
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Anggota
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="anggota_input" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Input</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <!-- acctive untuk select -->
+                  <a href="anggota_laporan" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Laporan</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Data Buku
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/buku_input" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Input</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/Buku_daftar" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Daftar Buku</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-th-large"></i>
+                <p>
+                  Kategori
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/kategori" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Input</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/lap_kategori" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Laporan</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="/penerbit_input" class="nav-link">
+                <i class="nav-icon fas fa-landmark"></i>
+                <p>
+                  Penerbit
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-arrow-right"></i>
+                <p>
+                  Pemasukan Buku
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/pemasukan_input" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Input</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/pemasukan_laporan" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Laporan</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link ">
+                <i class="nav-icon fas fa-arrow-left"></i>
+                <p>
+                  Pengeluaran Buku
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/pengeluaran_input" class="nav-link ">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Input</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/pengeluaran_laporan" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Laporan</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book-open"></i>
+                <p>
+                  Peminjaman Buku
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/peminjaman_input" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Input</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/peminjaman_laporan" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Laporan</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book-open"></i>
+                <p>
+                  Pengembalian Buku
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/pengembalian_input" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Input</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="/pengembalian_laporan" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Laporan</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="/history" class="nav-link">
+                <i class="nav-icon fas fa-clock"></i>
+                <p>
+                  History
+                </p>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/buku_pinjam" class="nav-link">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                  Buku Yang Dipinjam
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-coins"></i>
+                <p>
+                  Denda
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/denda" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Laporan Denda</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/bayar_denda" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pembayaran Denda</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/laporan_bayar" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Laporan Pembayaran</p>
+                  </a>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="/konfigurasi" class="nav-link">
+                <i class="nav-icon fas fa-wrench"></i>
+                <p>
+                  Konfigurasi
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/input_user" class="nav-link">
+                <i class="nav-icon fas fa-user-edit"></i>
+                <p>
+                  Input User
+                </p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">INPUT KATEGORI</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/beranda">Beranda</a></li>
+                <li class="breadcrumb-item active">Input Kategori</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content  -->
+      <div class="content">
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col-lg">
+              <div class="card">
+                <div class="card-body">
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#baru">
+                    Tambah Kategori
+                  </button>
+                  <hr>
+                  <div id="table_kategori"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="baru">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>
+              <i class="nav-icon fas fa-plus"></i>
+              Tambah Kategori
+            </h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Nama</label>
+              <input type="text" name="nama" class="form-control" id="tambah_nama" placeholder="Nama">
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal" onclick="kosong_kategori()">Tutup</button>
+              <button type="button" class="btn btn-primary" onclick="simpan_kategori(0,'tambah')">Simpan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- BATAS EDITT -->
+   <div class="modal fade" id="edit">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>
+            <i class="nav-icon fas fa-edit"></i>
+            Edit
+          </h4>
+        </div>
+        <div class="modal-body">
+          <div class="row mb-2">
+            <label>Nama</label>
+            <input type="text" name="tambah_nama" class="form-control" id="edit_nama" placeholder="Nama">
+          </div> 
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="kosong_kategori()">Tutup</button>
+            <button type="button" class="btn btn-primary" onclick="simpan_kategori(window.id_kategori,'edit')">Simpan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="modal fade" id="notif">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>
+              <i class="fas fa-info-circle"></i>
+              Peringatan!!
+            </h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group text-center">
+              <label>Yakin Hapus Data?</label>            
+            </div>
+          </div>
+            
+           
+         
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="kosong_kategori()">Tidak</button>
+    <button type="button" class="btn btn-primary" onclick="hapus_kategori(window.id_kategori)">Ya</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="dist/js/adminlte.js"></script>
+    <script src="../../plugins/select2/js/select2.full.min.js"></script>
+    <script src="plugins/chart.js/Chart.min.js"></script>
+    <script src="plugins/toastr/toastr.min.js"></script>
+
+    <script src="dist/js/pages/dashboard3.js">
+
+    </script>
+    <script>
+
+      
+      user = '<%= session["nama"] %>'
+
+      if (user == "") window.location = "/login"
+
+      document.getElementById("user").innerHTML = `<a href="#" class="d-block">${user} </a>`
+
+      kosong_id_kategori()
+      kategori()
+   
+
+      kosong_id_kategori()
+      function kosong_id_kategori(){
+        window.id_kategori=0
+      }
+      function kosong_id_kategori(){
+        window.id_kategori=0
+        
+      }
+      
+function kategori() {
+  $.ajax({
+    url: '/kategori1',
+    method: "GET",
+    dataType: "json",
+    data: {},
+    success: function (hasil) {
+      vdata = []
+      for (kolom of hasil) {
+      aksi = `
+            <div class="project-action">
+                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit" onclick="tampil_kategori(${kolom.id_kategori})">
+                  <i class="fas fa-pencil-alt">
+                  </i>  
+                  Edit
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#notif" onclick="data_hapus(${kolom.id_kategori})">
+                  <i class="fas fa-info-circle">
+                  </i>  
+                  Hapus
+                </button>
+            </div>
+          `
+        isi_table = []
+        isi_table.push(kolom.id_kategori,kolom.nama_kategori,gridjs.html(aksi))
+        vdata.push(isi_table)
+      }
+      new gridjs.Grid({
+        columns: ["ID", "Nama Kategori",""],
+        data: vdata,
+        pagination: {
+          enabled: true,
+          limit: 5
+        },
+        search: true,
+              language: {
+                search: {
+                  placeholder: "Cari"
+                },
+              'pagination': {
+                'previous': 'Sebelumnya',
+                'next': 'Selanjutnya',
+                'showing': 'Menampilkan',
+                'results': 'Hasil',
+                'to':'Sampai',
+                'of':'Dari'
+
+                  
+                }
+              }
+      }).render(document.getElementById("table_kategori"));
+    
+    
+    },
+    error: function (hasil) {
+      toastr.error(hasil.responseText)
+    }
+  })
+}
+      function simpan_kategori(id_kategori, kondisi) {
+        window.id_kategori = id_kategori
+        $.ajax({
+          url: '/simpan_kategori',
+          method: "post",
+          dataType: "JSON",
+          data: {
+            
+            nama: document.getElementById(`${kondisi}_nama`).value,
+            'id_kategori': id_kategori
+            
+          },
+          success: function (hasil) {
+
+            toastr.success('Berhasil Simpan')
+
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000)
+
+            kosong_kategori()
+
+          },
+
+          error: function (hasil) {
+            toastr.error(hasil.responseText)
+          }
+        })
+      }
+// Edit
+
+function  tampil_kategori(id_kategori) {
+window.id_kategori=id_kategori
+$.ajax({
+  url: '/tampil_kategori',
+  method: "POST",
+  dataType: "JSON",
+  data: {
+  "id_kategori" :id_kategori
+  },
+  success: function (hasil) {
+    document.getElementById("edit_nama").value=hasil.data.nama_kategori
+  },
+
+  error: function (hasil) {
+    toastr.error(hasil.responseText)
+  }
+})
+}
+
+// BATAAAAAAS
+function  hapus_kategori(id_kategori) {
+  window.id_kategori=id_kategori      
+       $.ajax({
+         url: '/hapus_kategori',
+         method: "DELETE",
+         dataType: "JSON",
+         data: {
+          "id_kategori" :id_kategori
+         },
+         success: function (hasil) {
+          
+           toastr.success('Berhasil Dihapus')
+           setTimeout(()=>{
+             window.location.reload();
+           },1000)
+           
+       
+         },
+       
+         error: function (hasil) {
+           toastr.error(hasil.responseText)
+         }
+     })
+     }
+
+     function data_hapus(id_kategori){
+      console.log(id_kategori)
+      window.id_kategori=id_kategori
+     }
+
+      function logout() {
+        $.ajax({
+          url: "/logout",
+          method: "get",
+          dataType: "json",
+          data: {},
+          success: function (results) {
+            window.location = '/login'
+          },
+          error: function (hasil) {
+            toastr.error(hasil.responseText)
+          }
+        })
+      }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+
+.img{
+    min-height: 100px;
+    width: 50%;
+    margin: auto;
+    object-fit: cover;
+    padding: 20px;
+    margin-top: 20px;
+}.img img{
+    width: 100%;
+}
+
+button{
+    padding: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background: unset;
+    border-radius: 2px;
+    border: 1px solid #dedede;
+    cursor: pointer;
+}.btn-success{
+    background: green;
+    color: white;
+}.btn-danger{
+    background: red;
+    color: white;
+}.btn-primary{
+    background: rgb(28, 130, 248);
+    color: white;
+}
