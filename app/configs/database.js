@@ -1,11 +1,12 @@
 const mysql = require('mysql')
+require('dotenv').config()
 
 const connection = mysql.createPool({
-    host : '192.168.200.69',
-    user : 'user',
+    host : process.env.db_host,
+    user : process.env.db_user,
     database : 'perpus',
     multipleStatements : true,
-    password : 'inticomp1!',
+    password : process.env.db_pass,
     port:3306
 })
 
